@@ -16,9 +16,11 @@ import { GraphQLLocalStrategy, buildContext } from "graphql-passport";
 
 import mergedTypeDefs from "./typeDefs/index.js";
 import mergedResolvers from "./resolvers/index.js";
-import connectToDatabase from "./config/dbConnection.js";
+import connectToDatabase from "./config/db/dbConnection.js";
+import { configurePassport } from "./config/passport/passport.config.js";
 
 const app = express();
+configurePassport();
 
 const httpServer = http.createServer(app);
 
@@ -53,9 +55,16 @@ const server = new ApolloServer({
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })], // Graceful shutdown
 });
 
+const PORT = process.env.PORT;
+
 await server.start();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [process.env.CLIENT_URL, `http://localhost:${PORT}`],
+    credentials: true,
+  })
+);
 app.use(compression({ threshold: 1024 }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -67,6 +76,6 @@ app.use(
   })
 );
 
-await new Promise((resolve) => httpServer.listen({ port: 8000 }, resolve));
+await new Promise((resolve) => httpServer.listen({ port: PORT }, resolve));
 await connectToDatabase();
-console.log(`🚀 Server ready at http://localhost:8000/`);
+console.log(`🚀 Server ready at http://localhost:${PORT}/`);
