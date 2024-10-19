@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const transacitionSchema = new mongoose.Schema(
+const transactionSchema = new mongoose.Schema(
   {
     userId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -37,4 +37,4 @@ const transacitionSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const Transaction = mongoose.model("Transaction", transacitionSchema);
+export const Transaction = mongoose.model("Transaction", transactionSchema);

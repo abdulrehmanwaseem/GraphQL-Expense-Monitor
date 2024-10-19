@@ -47,13 +47,13 @@ const userResolver = {
 
         const profilePic = `https://avatar.iran.liara.run/public/${gender}?${username}`;
 
-        const createUser = await User.create({
+        const newUser = await User.create({
           ...input,
           profilePic,
         });
 
-        await context.login(createUser);
-        return createUser;
+        await context.login(newUser);
+        return newUser;
       } catch (err) {
         throw new ApiError(err.message, err.status);
       }
