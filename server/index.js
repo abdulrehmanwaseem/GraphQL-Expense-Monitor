@@ -12,7 +12,7 @@ import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
 
-import { GraphQLLocalStrategy, buildContext } from "graphql-passport";
+import { buildContext } from "graphql-passport";
 
 import mergedTypeDefs from "./typeDefs/index.js";
 import mergedResolvers from "./resolvers/index.js";

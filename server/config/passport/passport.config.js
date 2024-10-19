@@ -1,5 +1,5 @@
 import passport from "passport";
-import User from "../../models/user.model.js";
+import { User } from "../../models/user.model.js";
 import { GraphQLLocalStrategy } from "graphql-passport";
 import { ApiError } from "../../lib/apiError.js";
 
