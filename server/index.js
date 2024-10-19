@@ -18,6 +18,7 @@ import mergedTypeDefs from "./typeDefs/index.js";
 import mergedResolvers from "./resolvers/index.js";
 import connectToDatabase from "./config/db/dbConnection.js";
 import { configurePassport } from "./config/passport/passport.config.js";
+import globalErrorHandler from "./lib/globalErrorHandler.js";
 
 const app = express();
 configurePassport();
@@ -75,6 +76,8 @@ app.use(
     context: async ({ req, res }) => buildContext({ req, res }), // Context middleware
   })
 );
+
+app.use(globalErrorHandler);
 
 await new Promise((resolve) => httpServer.listen({ port: PORT }, resolve));
 await connectToDatabase();
