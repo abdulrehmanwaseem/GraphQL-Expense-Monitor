@@ -8,9 +8,7 @@ import { BackgroundBeams } from "./components/ui/background-beams.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <BackgroundBeams>
-        <App />
-      </BackgroundBeams>
+      <App />
     </BrowserRouter>
   </StrictMode>
 );

@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.customized-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.customized-scrollbar::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.customized-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #3c50e0;
+  outline: 1px solid slategrey;
+}
+
+@keyframes loadingDots {
+  0% {
+    content: "Loading";
+  }
+  25% {
+    content: "Loading.";
+  }
+  50% {
+    content: "Loading..";
+  }
+  75% {
+    content: "Loading...";
+  }
+  100% {
+    content: "Loading";
+  }
+}
+
+.loading-text::after {
+  content: "Loading";
+  animation: loadingDots 1s infinite;
+}
