@@ -1,17 +1,24 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
+import SignUp from "./screens/auth/signUp";
+import Login from "./screens/auth/Login";
+import Home from "./screens/home";
+import Transaction from "./screens/transaction";
+import NotFound from "./screens/error";
+import Header from "./components/ui/header";
+
 const App = () => {
   const authUser = true;
   return (
     <>
-      {/* {authUser && <Header />} */}
+      {authUser && <Header />}
       <Routes>
-        {/* <Route path="/" element={<HomePage />} /> */}
-        {/* <Route path="/login" element={<LoginPage />} /> */}
-        <Route path="/signup" element={<SignUpPage />} />
-        {/* <Route path="/transaction/:id" element={<TransactionPage />} /> */}
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/transaction/:id" element={<Transaction />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
